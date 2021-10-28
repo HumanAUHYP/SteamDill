@@ -51,10 +51,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>0B3BF1E32CBA770453D2A945C6C21327176A592E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>8620BD49E407FED802CFAF13D706E9252F0C6003</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>LoginPage_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -72,6 +73,9 @@
   <PropertyGroup />
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -126,6 +130,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="LoginPage_1_TemporaryKey.pfx" />
+    <None Include="LoginPage_2_TemporaryKey.pfx" />
     <None Include="LoginPage_TemporaryKey.pfx" />
     <None Include="ManifestKey.snk" />
     <None Include="Properties\Settings.settings">
@@ -162,6 +167,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="exitClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
