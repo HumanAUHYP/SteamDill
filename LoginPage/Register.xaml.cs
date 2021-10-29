@@ -18,11 +18,33 @@ namespace LoginPage
     /// <summary>
     /// Логика взаимодействия для Register.xaml
     /// </summary>
-    public partial class Register : Page
+    public partial class Register : Window
     {
         public Register()
         {
             InitializeComponent();
+        }
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
+        }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cmb_type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

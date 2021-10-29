@@ -1,17 +1,18 @@
-﻿<Page x:Class="LoginPage.Register"
+﻿<Window x:Class="LoginPage.Register"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LoginPage"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Register">
+      Title="Register" Height="450" Width="800"
+      
+      WindowStyle="None" AllowsTransparency="true">
 
-    <Page.Background>
+    <Window.Background>
         <ImageBrush ImageSource="shapes.png"></ImageBrush>
-    </Page.Background>
-    <Page.Resources>
+    </Window.Background>
+    <Window.Resources>
         <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
             <ControlTemplate.Resources>
                 <Storyboard x:Key="Storyboard1">
@@ -51,7 +52,7 @@
                 </EventTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-    </Page.Resources>
+    </Window.Resources>
 
     <Border BorderBrush="Black" BorderThickness="2" CornerRadius="24">
         <Border.Background>
@@ -59,14 +60,14 @@
         </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Margin="-2,2,2,-2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
+                    <ColumnDefinition/>
                     <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition />
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -75,7 +76,32 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="43" Template="{DynamicResource ButtonControlTemplate1}" Margin="0,12,-720,391" Click="exit_Click" Grid.RowSpan="4" />
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Name:" Margin="10" Foreground="White"/>
+                        <TextBox x:Name="txt_login" Width="150" Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Password:" Margin="10" Foreground="White"/>
+                        <PasswordBox x:Name="txt_password" Width="150" Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="level:" Margin="10" Foreground="White"/>
+                        <ComboBox x:Name="cmb_type" Width="150" Margin="10" ItemsSource="{Binding curs;}" SelectionChanged="cmb_type_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding title}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="reg" Padding="20,5,20,5" Margin="10" Click="Button_Click"/>
+                    </StackPanel>
+                </StackPanel>
             </Grid>
         </Grid>
     </Border>
-</Page>
+</Window>

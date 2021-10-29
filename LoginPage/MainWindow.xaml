@@ -56,12 +56,32 @@
         <Border.Background>
             <ImageBrush ImageSource="galaxy.jpg"></ImageBrush>
         </Border.Background>
-        <Grid Margin="-2,2,2,-2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="43" Template="{DynamicResource ButtonControlTemplate1}" Margin="0,12,12,391" Click="exit_Click" Grid.RowSpan="2" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Margin="-2,2,2,-2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="43" Template="{DynamicResource ButtonControlTemplate1}" Margin="0,12,-720,391" Click="exit_Click" Grid.RowSpan="4" />
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Reg:" Margin="10" Foreground="White"/>
+                        <Button x:Name="btn_reg" Width="50" Margin="10" Click="btn_reg_Click"/>
+                    </StackPanel>
+                    
+                </StackPanel>
+            </Grid>
         </Grid>
     </Border>
 </Window>

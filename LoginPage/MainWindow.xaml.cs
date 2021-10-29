@@ -37,5 +37,12 @@ namespace LoginPage
         {
             Close();
         }
+
+        private void btn_reg_Click(object sender, RoutedEventArgs e)
+        {
+            Register register = new Register();
+            register.Show();
+            Close();
+        }
     }
 }
