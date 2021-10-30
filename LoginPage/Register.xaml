@@ -91,11 +91,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="level:" Margin="10" Foreground="White"/>
-                        <ComboBox x:Name="cmb_type" Width="150" Margin="10" ItemsSource="{Binding curs;}" SelectionChanged="cmb_type_SelectionChanged">
+                        <ComboBox x:Name="cmb_type" Width="150" Margin="10" ItemsSource="{Binding types}" SelectionChanged="cmb_type_SelectionChanged">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                        <TextBlock Text="{Binding title}"/>
+                                        <TextBlock Text="{Binding type_user}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>

@@ -1,12 +1,13 @@
-﻿<Window x:Class="LoginPage.MainWindow"
+﻿<Window x:Class="LoginPage.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginPage"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="Login" Height="450" Width="800"
         WindowStyle="None" AllowsTransparency="true">
+
     <Window.Background>
         <ImageBrush ImageSource="shapes.png"></ImageBrush>
     </Window.Background>
@@ -76,12 +77,15 @@
                 <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="43" Template="{DynamicResource ButtonControlTemplate1}" Margin="0,12,-720,391" Click="exit_Click" Grid.RowSpan="4" />
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Registration:" Margin="10" Foreground="White"/>
-                        <Button x:Name="btn_reg" Width="50" Margin="10" Click="btn_reg_Click"/>
+                        <TextBlock Text="login" Margin="10" Foreground="White"/>
+                        <TextBox x:Name="txt_login" Width="150" Margin="10"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Login:" Margin="10" Foreground="White"/>
-                        <Button x:Name="btn_login" Width="50" Margin="10" Click="btn_login_Click"/>
+                        <TextBlock Text="password" Margin="10" Foreground="White"/>
+                        <PasswordBox x:Name="txt_password" Width="173" Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="log in" Padding="20, 5, 20, 5" Margin="10" Click="Button_Click"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>

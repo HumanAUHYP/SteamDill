@@ -44,5 +44,12 @@ namespace LoginPage
             register.Show();
             Close();
         }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
     }
 }

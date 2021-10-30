@@ -8,6 +8,6 @@ namespace LoginPage
 {
     class db_connection
     {
-        public static SteamDillEntities connection = new SteamDillEntities();
+        public static SteamDillEntities1 connection = new SteamDillEntities1();
     }
 }

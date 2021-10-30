@@ -12,17 +12,12 @@ namespace LoginPage
     using System;
     using System.Collections.Generic;
     
-    public partial class users
+    public partial class sysdiagrams
     {
-        public int id_user { get; set; }
         public string name { get; set; }
-        public string surname { get; set; }
-        public string mail { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public string image { get; set; }
-        public int id_type { get; set; }
-    
-        public virtual user_types user_types { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

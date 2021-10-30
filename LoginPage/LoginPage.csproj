@@ -108,6 +108,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="db_connection.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,9 +129,19 @@
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="user_types.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -215,19 +228,19 @@
     <Resource Include="icon1.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

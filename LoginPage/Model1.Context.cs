@@ -13,10 +13,10 @@ namespace LoginPage
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SteamDillEntities : DbContext
+    public partial class SteamDillEntities1 : DbContext
     {
-        public SteamDillEntities()
-            : base("name=SteamDillEntities")
+        public SteamDillEntities1()
+            : base("name=SteamDillEntities1")
         {
         }
     
@@ -25,6 +25,8 @@ namespace LoginPage
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<user_types> user_types { get; set; }
         public virtual DbSet<users> users { get; set; }
     }
 }

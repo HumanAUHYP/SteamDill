@@ -4,8 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fe04a006d4294a7db493ffc43a9521a1" Name="Diagram1">
-        <EntityTypeShape EntityType="SteamDillModel.users" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="eca8b852fc794d2fb724a7a71fe5f613" Name="Diagram1">
+        <EntityTypeShape EntityType="SteamDillModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SteamDillModel.user_types" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="SteamDillModel.users" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="SteamDillModel.FK_users_user_types" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

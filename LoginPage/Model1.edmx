@@ -5,56 +5,150 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище SteamDillModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="user_types">
+          <Key>
+            <PropertyRef Name="id_type" />
+          </Key>
+          <Property Name="id_type" Type="int" Nullable="false" />
+          <Property Name="type_user" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="id_user" />
           </Key>
           <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="50" />
+          <Property Name="mail" Type="varchar" MaxLength="50" />
           <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="image" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="50" />
+          <Property Name="id_type" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_users_user_types">
+          <End Role="user_types" Type="Self.user_types" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_types">
+              <PropertyRef Name="id_type" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="id_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище SteamDillModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_types" EntityType="Self.user_types" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_users_user_types" Association="Self.FK_users_user_types">
+            <End Role="user_types" EntitySet="user_types" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SteamDillModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SteamDillEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="SteamDillModel.sysdiagrams" />
+          <EntitySet Name="user_types" EntityType="SteamDillModel.user_types" />
+          <EntitySet Name="users" EntityType="SteamDillModel.users" />
+          <AssociationSet Name="FK_users_user_types" Association="SteamDillModel.FK_users_user_types">
+            <End Role="user_types" EntitySet="user_types" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user_types">
+          <Key>
+            <PropertyRef Name="id_type" />
+          </Key>
+          <Property Name="id_type" Type="Int32" Nullable="false" />
+          <Property Name="type_user" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="users" Relationship="SteamDillModel.FK_users_user_types" FromRole="user_types" ToRole="users" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="id_user" />
           </Key>
-          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user_types" Relationship="SteamDillModel.FK_users_user_types" FromRole="users" ToRole="user_types" />
         </EntityType>
-        <EntityContainer Name="SteamDillEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="users" EntityType="Self.users" />
-        </EntityContainer>
+        <Association Name="FK_users_user_types">
+          <End Type="SteamDillModel.user_types" Role="user_types" Multiplicity="1" />
+          <End Type="SteamDillModel.users" Role="users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_types">
+              <PropertyRef Name="id_type" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="id_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище SteamDillModelContainer" CdmEntityContainer="SteamDillEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SteamDillModelContainer" CdmEntityContainer="SteamDillEntities1">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SteamDillModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_types">
+            <EntityTypeMapping TypeName="SteamDillModel.user_types">
+              <MappingFragment StoreEntitySet="user_types">
+                <ScalarProperty Name="type_user" ColumnName="type_user" />
+                <ScalarProperty Name="id_type" ColumnName="id_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="SteamDillModel.users">
               <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="id_user" ColumnName="id_user" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
-                <ScalarProperty Name="mail" ColumnName="mail" />
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="id_type" ColumnName="id_type" />
                 <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

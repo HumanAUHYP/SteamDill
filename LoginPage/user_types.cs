@@ -12,17 +12,18 @@ namespace LoginPage
     using System;
     using System.Collections.Generic;
     
-    public partial class users
+    public partial class user_types
     {
-        public int id_user { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
-        public string mail { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public string image { get; set; }
-        public int id_type { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public user_types()
+        {
+            this.users = new HashSet<users>();
+        }
     
-        public virtual user_types user_types { get; set; }
+        public int id_type { get; set; }
+        public string type_user { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<users> users { get; set; }
     }
 }

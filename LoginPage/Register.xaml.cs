@@ -21,12 +21,12 @@ namespace LoginPage
     /// </summary>
     public partial class Register : Window
     {
-        public static ObservableCollection<ado.type_user> curss { get; set; }
+        public static ObservableCollection<user_types> types { get; set; }
         int i { get; set; }
         public Register()
         {
             InitializeComponent();
-            curss = new ObservableCollection<ado.type_user>(class_0.db_connection.connection.type_user.ToList());
+            types = new ObservableCollection<user_types>(db_connection.connection.user_types.ToList());
             this.DataContext = this;
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -47,13 +47,13 @@ namespace LoginPage
             try
             {
                 MessageBox.Show($"{i}");
-                var save = new ado.Users();
-                save.type_id = i;
+                var save = new users();
+                save.id_type = i;
                 save.name = txt_name.Text;
                 save.login = txt_login.Text;
                 save.password = txt_password.Password;
-                class_0.db_connection.connection.Users.Add(save);
-                class_0.db_connection.connection.SaveChanges();
+                db_connection.connection.users.Add(save);
+                db_connection.connection.SaveChanges();
                 MessageBox.Show("all ok");
             }
             catch (Exception ex)
@@ -64,7 +64,7 @@ namespace LoginPage
 
         private void cmb_type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var a = (sender as ComboBox).SelectedItem as ado.type_user;
+            var a = (sender as ComboBox).SelectedItem as user_types;
             i = a.id_type;
         }
     }
