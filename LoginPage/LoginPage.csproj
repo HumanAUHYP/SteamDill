@@ -51,11 +51,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>8620BD49E407FED802CFAF13D706E9252F0C6003</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>905ED0C90DF91BD5D352E0D0087A22ADAC0FA931</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>LoginPage_3_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -98,9 +97,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,6 +144,7 @@
     </EmbeddedResource>
     <None Include="LoginPage_1_TemporaryKey.pfx" />
     <None Include="LoginPage_2_TemporaryKey.pfx" />
+    <None Include="LoginPage_3_TemporaryKey.pfx" />
     <None Include="LoginPage_TemporaryKey.pfx" />
     <None Include="ManifestKey.snk" />
     <None Include="Properties\Settings.settings">
