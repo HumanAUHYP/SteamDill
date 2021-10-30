@@ -38,10 +38,11 @@ namespace LoginPage
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            users = new ObservableCollection<users>(db_connection.connection.users.ToList());
-            var z = users.Where(a => a.login == txt_login.Text && a.password == txt_password.Password).FirstOrDefault();
+            
             try
             {
+                users = new ObservableCollection<users>(db_connection.connection.users.ToList());
+                var z = users.Where(a => a.login == txt_login.Text && a.password == txt_password.Password).FirstOrDefault();
                 MessageBox.Show($"авторизация успешна {z.name}");
             }
             catch (Exception ex)
