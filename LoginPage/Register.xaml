@@ -79,6 +79,10 @@
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="Name:" Margin="10" Foreground="White"/>
+                        <TextBox x:Name="txt_name" Width="150" Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Login:" Margin="10" Foreground="White"/>
                         <TextBox x:Name="txt_login" Width="150" Margin="10"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
