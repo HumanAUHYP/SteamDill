@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800"
         WindowStyle="None" AllowsTransparency="true">
     <Window.Background>
-        <ImageBrush ImageSource="shapes.png"></ImageBrush>
+        <ImageBrush ImageSource="img\shapes.png"></ImageBrush>
     </Window.Background>
     <Window.Resources>
         <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
@@ -31,7 +31,7 @@
             </ControlTemplate.Resources>
             <Grid>
                 <Grid.Background>
-                    <ImageBrush ImageSource="/exit.png"></ImageBrush>
+                    <ImageBrush ImageSource="img\exit.png"></ImageBrush>
                 </Grid.Background>
                 <Ellipse x:Name="ellipse" Fill="Transparent"/>
             </Grid>
@@ -54,7 +54,7 @@
 
     <Border BorderBrush="Black" BorderThickness="2" CornerRadius="24">
         <Border.Background>
-            <ImageBrush ImageSource="galaxy.jpg"></ImageBrush>
+            <ImageBrush ImageSource="img\galaxy.jpg"></ImageBrush>
         </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>

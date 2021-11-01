@@ -67,5 +67,12 @@ namespace SteamDill
             var a = (sender as ComboBox).SelectedItem as user_types;
             i = a.id_type;
         }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            Close();
+        }
     }
 }

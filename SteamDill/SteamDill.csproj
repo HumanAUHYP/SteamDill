@@ -75,7 +75,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon1.ico</ApplicationIcon>
+    <ApplicationIcon>img\icon1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -229,27 +229,28 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="galaxy.jpg" />
+    <Resource Include="img\galaxy.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="shapes.png" />
+    <Resource Include="img\shapes.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="galaxy.png" />
+    <Resource Include="img\galaxy.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="exit.png" />
+    <Resource Include="img\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="exitClick.png" />
+    <Resource Include="img\exitClick.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon1.ico" />
+    <Resource Include="img\icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\back.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

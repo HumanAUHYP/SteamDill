@@ -73,6 +73,11 @@ namespace SteamDill
             product_i = product.id_product;
         }
 
-
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            Close();
+        }
     }
 }

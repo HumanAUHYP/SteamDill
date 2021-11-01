@@ -8,7 +8,7 @@
         Title="OrdersCreate" Height="450" Width="800"
         WindowStyle="None" AllowsTransparency="true">
     <Window.Background>
-        <ImageBrush ImageSource="shapes.png"></ImageBrush>
+        <ImageBrush ImageSource="img\shapes.png"></ImageBrush>
     </Window.Background>
     <Window.Resources>
         <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
@@ -31,7 +31,47 @@
             </ControlTemplate.Resources>
             <Grid>
                 <Grid.Background>
-                    <ImageBrush ImageSource="/exit.png"></ImageBrush>
+                    <ImageBrush ImageSource="img\exit.png"></ImageBrush>
+                </Grid.Background>
+                <Ellipse x:Name="ellipse" Fill="Transparent"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
+                    <BeginStoryboard x:Name="Storyboard2_BeginStoryboard1" Storyboard="{StaticResource Storyboard1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <BeginStoryboard x:Name="Storyboard1_BeginStoryboard" Storyboard="{StaticResource Storyboard1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                    <BeginStoryboard x:Name="Storyboard3_BeginStoryboard" Storyboard="{StaticResource Storyboard3}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonControlTemplate2" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="Storyboard1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Purple"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="Storyboard2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="Storyboard3">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Transparent"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="img\back.png"></ImageBrush>
                 </Grid.Background>
                 <Ellipse x:Name="ellipse" Fill="Transparent"/>
             </Grid>
@@ -54,7 +94,7 @@
 
     <Border BorderBrush="Black" BorderThickness="2" CornerRadius="24">
         <Border.Background>
-            <ImageBrush ImageSource="galaxy.jpg"></ImageBrush>
+            <ImageBrush ImageSource="img\galaxy.jpg"></ImageBrush>
         </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -74,6 +114,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="43" Template="{DynamicResource ButtonControlTemplate1}" Margin="0,12,-720,391" Click="exit_Click" Grid.RowSpan="4" />
+                <Button x:Name="back" Content="X" HorizontalAlignment="Right" Width="43" Template="{DynamicResource ButtonControlTemplate2}" Margin="0,12,0,391" Click="back_Click" Grid.RowSpan="4" />
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="Order number" Margin="10" Foreground="White"/>
