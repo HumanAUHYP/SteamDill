@@ -24,5 +24,39 @@ namespace SteamDill
         {
             InitializeComponent();
         }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
+        }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btn_reg_Click(object sender, RoutedEventArgs e)
+        {
+            Register register = new Register();
+            register.Show();
+            Close();
+        }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+
+        private void btn_create_order_Click(object sender, RoutedEventArgs e)
+        {
+            OrdersCreate orders = new OrdersCreate();
+            orders.Show();
+            Close();
+        }
     }
 }
