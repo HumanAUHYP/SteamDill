@@ -16,7 +16,7 @@
           <Key>
             <PropertyRef Name="id_order" />
           </Key>
-          <Property Name="id_order" Type="int" Nullable="false" />
+          <Property Name="id_order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="order_number" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="id_status" Type="int" Nullable="false" />
           <Property Name="id_table" Type="int" Nullable="false" />
