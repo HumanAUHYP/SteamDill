@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoginPage
+namespace SteamDill
 {
     class db_connection
     {

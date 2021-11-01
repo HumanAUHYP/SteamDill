@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LoginPage
+namespace SteamDill
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

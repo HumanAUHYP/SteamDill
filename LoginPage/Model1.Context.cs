@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LoginPage
+namespace SteamDill
 {
     using System;
     using System.Data.Entity;
