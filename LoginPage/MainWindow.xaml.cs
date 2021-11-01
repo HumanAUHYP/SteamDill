@@ -51,5 +51,12 @@ namespace SteamDill
             login.Show();
             Close();
         }
+
+        private void btn_create_order_Click(object sender, RoutedEventArgs e)
+        {
+            OrdersCreate orders = new OrdersCreate();
+            orders.Show();
+            Close();
+        }
     }
 }
