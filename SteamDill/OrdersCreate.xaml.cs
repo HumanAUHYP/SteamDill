@@ -43,6 +43,13 @@ namespace SteamDill
         {
             Close();
         }
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            WaiterMenu waiterMenu = new WaiterMenu();
+            waiterMenu.Show();
+            Close();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -54,11 +61,11 @@ namespace SteamDill
                 save.order_number = txt_order.Text;
                 db_connection.connection.orders.Add(save);
                 db_connection.connection.SaveChanges();
-                MessageBox.Show("all ok");
+                MessageBox.Show("Order created");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Какие-то поля не заполнены {ex}", "error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Какие-то поля не заполнены {ex}", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void cmb_tabel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,13 +78,6 @@ namespace SteamDill
         {
             var product = (sender as ComboBox).SelectedItem as products;
             product_i = product.id_product;
-        }
-
-        private void back_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow main = new MainWindow();
-            main.Show();
-            Close();
         }
     }
 }

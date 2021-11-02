@@ -57,54 +57,22 @@ namespace SteamDill
                 users = new ObservableCollection<users>(db_connection.connection.users.ToList());
                 var z = users.Where(a => a.login == txt_login.Text && a.password == txt_password.Password).FirstOrDefault();
 
-                if (z == null) MessageBox.Show($"Неправильный логин или пароль", "error", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (z == null) MessageBox.Show($"Неправильный логин или пароль", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 else
                 {
-                    MessageBox.Show($"авторизация успешна {z.name}");
                     var type = types.Where(a => a.id_type == z.id_type).FirstOrDefault();
+                    MessageBox.Show($"Авторизация успешна, {z.name}, вы {type.type_user}");
                     if (type.type_user == "Официант")
                     {
-                        OrdersCreate ordersCreate = new OrdersCreate();
-                        ordersCreate.Show();
+                        WaiterMenu waiterMenu = new WaiterMenu();
+                        waiterMenu.Show();
                         Close();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Какие-то поля не заполнены {ex}", "error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            
-        }
-
-        private void btn_create_order_Click(object sender, RoutedEventArgs e)
-        {
-            OrdersCreate orders = new OrdersCreate();
-            orders.Show();
-            Close();
-        }
-
-        private void TextSizeChanger(object sender, SizeChangedEventArgs e)
-        {
-            Size n = e.NewSize;
-            Size p = e.PreviousSize;
-            double l = n.Width / p.Width;
-            if (l != double.PositiveInfinity)
-            {
-                if (sender is TextBox)
-                {
-                    (sender as TextBox).FontSize *= l;
-                }
-                else if (sender is TextBlock)
-                {
-                    (sender as TextBlock).FontSize *= l;
-                }
-                else if (sender is Button)
-                {
-                    (sender as Button).FontSize *= l;
-                }
-                else if (sender is DatePicker)
-                    (sender as DatePicker).FontSize *= l;
+                MessageBox.Show($"Какие-то поля не заполнены {ex}", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

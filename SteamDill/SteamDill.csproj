@@ -132,6 +132,9 @@
     <Compile Include="order_status.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrdersComplete.xaml.cs">
+      <DependentUpon>OrdersComplete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="products.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -150,6 +153,9 @@
     <Compile Include="user_types.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="WaiterMenu.xaml.cs">
+      <DependentUpon>WaiterMenu.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -166,7 +172,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OrdersComplete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WaiterMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
