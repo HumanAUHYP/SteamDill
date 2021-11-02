@@ -46,7 +46,6 @@ namespace SteamDill
         {
             try
             {
-                MessageBox.Show($"{i}");
                 var save = new users();
                 save.id_type = i;
                 save.name = txt_name.Text;
@@ -55,6 +54,10 @@ namespace SteamDill
                 db_connection.connection.users.Add(save);
                 db_connection.connection.SaveChanges();
                 MessageBox.Show("all ok");
+
+                MainWindow main = new MainWindow();
+                main.Show();
+                Close();
             }
             catch (Exception ex)
             {

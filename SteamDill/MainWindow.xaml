@@ -54,38 +54,34 @@
 
     <Border BorderBrush="Black" BorderThickness="2" CornerRadius="24">
         <Border.Background>
-            <ImageBrush ImageSource="img\galaxy.jpg"></ImageBrush>
+            <ImageBrush ImageSource="img\background.jpg"></ImageBrush>
         </Border.Background>
-        <Grid>
+        <Grid Margin="-2,2,2,-2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Margin="-2,2,2,-2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="43" Template="{DynamicResource ButtonControlTemplate1}" Margin="0,12,-720,391" Click="exit_Click" Grid.RowSpan="4" />
-                <StackPanel Grid.Row="1" Grid.Column="1">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="btn_reg" Width="80" Content="Registration" Margin="10" Click="btn_reg_Click"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="btn_login" Width="50" Content="Login" Margin="10" Click="btn_login_Click"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="btn_create_order" Width="100" Content="Create order" Margin="10" Click="btn_create_order_Click"/>
-                    </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="exit" Grid.Column="2" Grid.Row="0" Content="X" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate1}" Click="exit_Click" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="76" Margin="117,0,25,0" Width="389">
+                    <TextBlock Text="Login:" Margin="10" Foreground="White" FontSize="32"/>
+                    <TextBox x:Name="txt_login" Width="200" Margin="10" FontSize="32"/>
                 </StackPanel>
-            </Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="77" Margin="64,0,25,0" Width="442">
+                    <TextBlock Text="Password:" Margin="10" Foreground="White" FontSize="32"/>
+                    <PasswordBox x:Name="txt_password" Width="200" Margin="10" FontSize="32"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="80" Margin="126,0,95,0" Width="310">
+                    <Button x:Name="btn_login" Content="Log in"  Margin="10" Click="btn_login_Click" FontSize="32"/>
+                    <Button x:Name="btn_reg" Content="Register" Margin="10" Click="btn_reg_Click" FontSize="32"/>
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Border>
 </Window>

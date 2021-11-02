@@ -94,61 +94,54 @@
 
     <Border BorderBrush="Black" BorderThickness="2" CornerRadius="24">
         <Border.Background>
-            <ImageBrush ImageSource="img\galaxy.jpg"></ImageBrush>
+            <ImageBrush ImageSource="img\background.jpg"></ImageBrush>
         </Border.Background>
-        <Grid>
+        <Grid Margin="-2,2,2,-2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Margin="-2,2,2,-2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="43" Template="{DynamicResource ButtonControlTemplate1}" Margin="0,12,-720,391" Click="exit_Click" Grid.RowSpan="4" />
-                <Button x:Name="back" Content="X" HorizontalAlignment="Right" Width="43" Template="{DynamicResource ButtonControlTemplate2}" Margin="0,12,0,391" Click="back_Click" Grid.RowSpan="4" />
-                <StackPanel Grid.Row="1" Grid.Column="1">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Order number" Margin="10" Foreground="White"/>
-                        <TextBox x:Name="txt_order" Width="50" Margin="10"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Table number" Margin="10" Foreground="White"/>
-                        <ComboBox x:Name="cmb_tabel" Width="50" Margin="10" ItemsSource="{Binding tables}" SelectionChanged="cmb_tabel_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding table_number}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Product:" Margin="10" Foreground="White"/>
-                        <ComboBox x:Name="cmb_product" Width="100" Margin="10" ItemsSource="{Binding products}" SelectionChanged="cmb_product_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding product_name}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Content="Create" Padding="20,5,20,5" Margin="10" Click="Button_Click"/>
-                    </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate1}" Click="exit_Click" Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" />
+            <Button x:Name="back" Content="X" HorizontalAlignment="Left" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate2}" Click="back_Click" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" />
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="69" Margin="75,0,39,0" Width="417">
+                    <TextBlock Text="Order number:" Margin="10" Foreground="White" FontSize="32"/>
+                    <TextBox x:Name="txt_order" Width="100" Margin="10" FontSize="32"/>
                 </StackPanel>
-            </Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="77" Margin="84,0,43,0" Width="404">
+                    <TextBlock Text="Table number:" Margin="10" Foreground="White" FontSize="32"/>
+                    <ComboBox x:Name="cmb_tabel" Width="100" Margin="10" ItemsSource="{Binding tables}"  SelectionChanged="cmb_tabel_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding table_number}" FontSize="32"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="76" Margin="165,0,10,0" Width="356">
+                    <TextBlock Text="Product:" Margin="10" Foreground="White" FontSize="32"/>
+                    <ComboBox x:Name="cmb_product" Width="200" Margin="10" ItemsSource="{Binding products}" SelectionChanged="cmb_product_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding product_name}" FontSize="32"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="88" Margin="226,0,151,0" Width="154">
+                    <Button Content="Create" Padding="20,5,20,5" Margin="10" FontSize="32" Click="Button_Click"/>
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Border>
 </Window>
