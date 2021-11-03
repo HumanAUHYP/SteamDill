@@ -20,6 +20,7 @@ namespace SteamDill
     /// </summary>
     public partial class OrdersComplete : Window
     {
+        public bool isMaximize = false;
         public static ObservableCollection<orders> orders { get; set; }
         public OrdersComplete()
         {
@@ -46,6 +47,13 @@ namespace SteamDill
             WaiterMenu waiterMenu = new WaiterMenu();
             waiterMenu.Show();
             Close();
+        }
+
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (isMaximize) WindowState = WindowState.Normal;
+            else WindowState = WindowState.Maximized;
+            isMaximize = !isMaximize;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -21,6 +21,7 @@ namespace SteamDill
     /// </summary>
     public partial class Register : Window
     {
+        public bool isMaximize = false;
         public static ObservableCollection<user_types> types { get; set; }
         int i { get; set; }
         public Register()
@@ -40,6 +41,20 @@ namespace SteamDill
         private void exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            WaiterMenu waiterMenu = new WaiterMenu();
+            waiterMenu.Show();
+            Close();
+        }
+
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (isMaximize) WindowState = WindowState.Normal;
+            else WindowState = WindowState.Maximized;
+            isMaximize = !isMaximize;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -90,6 +90,46 @@
                 </EventTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonControlTemplate3" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="Storyboard1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Purple"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="Storyboard2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="Storyboard3">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Transparent"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="img\maximize.png"></ImageBrush>
+                </Grid.Background>
+                <Ellipse x:Name="ellipse" Fill="Transparent"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
+                    <BeginStoryboard x:Name="Storyboard2_BeginStoryboard1" Storyboard="{StaticResource Storyboard1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <BeginStoryboard x:Name="Storyboard1_BeginStoryboard" Storyboard="{StaticResource Storyboard1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                    <BeginStoryboard x:Name="Storyboard3_BeginStoryboard" Storyboard="{StaticResource Storyboard3}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </Window.Resources>
 
     <Border BorderBrush="Black" BorderThickness="2" CornerRadius="24">
@@ -98,17 +138,20 @@
         </Border.Background>
         <Grid Margin="-2,2,2,-2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="115*"/>
+                <ColumnDefinition Width="568*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate1}" Click="exit_Click" Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" Margin="0,10,10,0" />
+            <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate1}" Click="exit_Click" Grid.Row="0" Grid.Column="4" VerticalAlignment="Top" Margin="0,10,10,0" />
             <Button x:Name="back" Content="X" HorizontalAlignment="Left" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate2}" Click="back_Click" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Margin="10,10,0,0" />
+            <Button x:Name="Maximize" Grid.Column="3" Grid.Row="0" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate3}" Click="Maximize_Click" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0"/>
             <TextBlock x:Name="tb_namePos" Grid.Column="1" Text="Имя/Должность" Foreground="White" FontSize="32" HorizontalAlignment="Center" Margin="0,50,0,0"/>
             <StackPanel Grid.Row="1" Grid.Column="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="69" Margin="75,0,39,0" Width="417">

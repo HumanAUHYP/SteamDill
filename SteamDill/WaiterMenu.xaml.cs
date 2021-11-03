@@ -19,6 +19,7 @@ namespace SteamDill
     /// </summary>
     public partial class WaiterMenu : Window
     {
+        public bool isMaximize = false;
         public WaiterMenu()
         {
             InitializeComponent();
@@ -41,6 +42,13 @@ namespace SteamDill
             MainWindow main = new MainWindow();
             main.Show();
             Close();
+        }
+
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (isMaximize) WindowState = WindowState.Normal;
+            else WindowState = WindowState.Maximized;
+            isMaximize = !isMaximize;
         }
 
         private void btn_newOrder_Click(object sender, RoutedEventArgs e)
