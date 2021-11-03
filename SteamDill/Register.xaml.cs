@@ -45,8 +45,8 @@ namespace SteamDill
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            WaiterMenu waiterMenu = new WaiterMenu();
-            waiterMenu.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             Close();
         }
 
