@@ -61,6 +61,7 @@
           </Key>
           <Property Name="id_type" Type="int" Nullable="false" />
           <Property Name="type_user" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="salary" Type="int" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -264,6 +265,7 @@
           <Property Name="id_type" Type="Int32" Nullable="false" />
           <Property Name="type_user" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="users" Relationship="SteamDillModel.FK_users_user_types" FromRole="user_types" ToRole="users" />
+          <Property Name="salary" Type="Int32" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -404,6 +406,7 @@
           <EntitySetMapping Name="user_types">
             <EntityTypeMapping TypeName="SteamDillModel.user_types">
               <MappingFragment StoreEntitySet="user_types">
+                <ScalarProperty Name="salary" ColumnName="salary" />
                 <ScalarProperty Name="type_user" ColumnName="type_user" />
                 <ScalarProperty Name="id_type" ColumnName="id_type" />
               </MappingFragment>

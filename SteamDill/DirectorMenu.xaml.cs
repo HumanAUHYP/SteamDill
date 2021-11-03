@@ -15,17 +15,16 @@ using System.Windows.Shapes;
 namespace SteamDill
 {
     /// <summary>
-    /// Логика взаимодействия для ManagerMenu.xaml
+    /// Логика взаимодействия для DirectorMenu.xaml
     /// </summary>
-    public partial class ManagerMenu : Window
+    public partial class DirectorMenu : Window
     {
         public bool isMaximize = false;
-        public ManagerMenu()
+        public DirectorMenu()
         {
             InitializeComponent();
             tb_namePos.Text = $"{GLOBALS.name}, {GLOBALS.pos}";
         }
-
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -52,18 +51,14 @@ namespace SteamDill
             isMaximize = !isMaximize;
         }
 
-        private void btn_ready_Click(object sender, RoutedEventArgs e)
+        private void btn_director_Click(object sender, RoutedEventArgs e)
         {
-            OrderReady orderReady = new OrderReady();
-            orderReady.Show();
-            Close();
+            MessageBox.Show("Coming soon");
         }
 
-        private void btn_orderProd_Click(object sender, RoutedEventArgs e)
+        private void btn_report_Click(object sender, RoutedEventArgs e)
         {
-            OrderProducts orderProducts = new OrderProducts();
-            orderProducts.Show();
-            Close();
+            MessageBox.Show("Coming soon");
         }
     }
 }

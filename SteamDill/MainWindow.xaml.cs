@@ -83,6 +83,12 @@ namespace SteamDill
                         managerMenu.Show();
                         Close();
                     }
+                    else if (type.type_user == "Директор")
+                    {
+                        DirectorMenu directorMenu = new DirectorMenu();
+                        directorMenu.Show();
+                        Close();
+                    }
                 }
             }
             catch (Exception ex)

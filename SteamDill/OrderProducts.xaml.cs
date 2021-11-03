@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,25 +11,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SteamDill
 {
     /// <summary>
-    /// Логика взаимодействия для Register.xaml
+    /// Логика взаимодействия для OrderProducts.xaml
     /// </summary>
-    public partial class Register : Window
+    public partial class OrderProducts : Window
     {
         public bool isMaximize = false;
-        public static ObservableCollection<user_types> types { get; set; }
-        int i { get; set; }
-        public Register()
+        public static ObservableCollection<products> products { get; set; }
+        public static ObservableCollection<storage> storage { get; set; }
+        public products product = new products();
+        int product_i { get; set; }
+        public OrderProducts()
         {
             InitializeComponent();
-            types = new ObservableCollection<user_types>(db_connection.connection.user_types.ToList());
+
+            tb_namePos.Text = $"{GLOBALS.name}, {GLOBALS.pos}";
+            products = new ObservableCollection<products>(db_connection.connection.products.ToList());
+            storage = new ObservableCollection<storage>(db_connection.connection.storage.ToList());
             this.DataContext = this;
         }
+
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
@@ -42,7 +47,6 @@ namespace SteamDill
         {
             Close();
         }
-
         private void back_Click(object sender, RoutedEventArgs e)
         {
             WaiterMenu waiterMenu = new WaiterMenu();
@@ -61,29 +65,22 @@ namespace SteamDill
         {
             try
             {
-                var save = new users();
-                save.id_type = i;
-                save.name = txt_name.Text;
-                save.login = txt_login.Text;
-                save.password = txt_password.Password;
-                db_connection.connection.users.Add(save);
-                db_connection.connection.SaveChanges();
-                MessageBox.Show("all ok");
+                var store = storage.Where(a => a.id_product == product_i).FirstOrDefault(); ;
 
-                MainWindow main = new MainWindow();
-                main.Show();
-                Close();
+                store.count += Convert.ToInt32(txt_count.Text);
+                db_connection.connection.SaveChanges();
+                MessageBox.Show($"Order for {txt_count.Text} {product.product_name} created");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Какие-то поля не заполнены {ex}", "error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Какие-то поля не заполнены {ex}", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private void cmb_type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cmb_product_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var a = (sender as ComboBox).SelectedItem as user_types;
-            i = a.id_type;
+            product = (sender as ComboBox).SelectedItem as products;
+            product_i = product.id_product;
         }
     }
 }

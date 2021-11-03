@@ -22,6 +22,7 @@ namespace SteamDill
     
         public int id_type { get; set; }
         public string type_user { get; set; }
+        public Nullable<int> salary { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<users> users { get; set; }

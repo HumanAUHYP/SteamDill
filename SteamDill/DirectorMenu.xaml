@@ -1,11 +1,11 @@
-﻿<Window x:Class="SteamDill.ManagerMenu"
+﻿<Window x:Class="SteamDill.DirectorMenu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SteamDill"
         mc:Ignorable="d"
-        Title="ManagerMenu" Height="450" Width="800"        
+        Title="DirectorMenu" Height="450" Width="800"
         WindowStyle="None" AllowsTransparency="true" WindowState="Maximized">
     <Window.Background>
         <ImageBrush ImageSource="img\shapes.png"></ImageBrush>
@@ -154,11 +154,12 @@
             <Button x:Name="Maximize" Grid.Column="3" Grid.Row="0" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate3}" Click="Maximize_Click" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0"/>
             <TextBlock x:Name="tb_namePos" Grid.Column="1" Text="Имя/Должность" Foreground="White" FontSize="32" HorizontalAlignment="Center" Margin="0,50,0,0"/>
             <StackPanel Grid.Row="1" Grid.Column="1">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="136" Width="526" Margin="2,0">
-                    <Button x:Name="btn_ready" Content="Order ready" Padding="20,5,20,5" Margin="10" FontSize="32" Click="btn_ready_Click"/>
-                    <Button x:Name="btn_orderProd" Content="Order products" Padding="20,5,20,5" Margin="10" FontSize="32" Click="btn_orderProd_Click" Width="272"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="110" Width="526" Margin="21,0">
+                    <Button x:Name="btn_report" Content="Get reports" Padding="20,5,20,5" Margin="10" FontSize="32" Click="btn_report_Click"/>
+                    <Button x:Name="btn_director" Content="DirectorPage" Padding="20,5,20,5" Margin="10" FontSize="32" Click="btn_director_Click" Width="272"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
     </Border>
 </Window>
+

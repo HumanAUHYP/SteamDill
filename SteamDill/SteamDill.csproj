@@ -108,6 +108,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="db_connection.cs" />
+    <Compile Include="DirectorMenu.xaml.cs">
+      <DependentUpon>DirectorMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GLOBALS.cs" />
     <Compile Include="ManagerMenu.xaml.cs">
       <DependentUpon>ManagerMenu.xaml</DependentUpon>
@@ -126,6 +129,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderProducts.xaml.cs">
+      <DependentUpon>OrderProducts.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderReady.xaml.cs">
       <DependentUpon>OrderReady.xaml</DependentUpon>
@@ -166,6 +172,10 @@
     <Compile Include="WaiterMenu.xaml.cs">
       <DependentUpon>WaiterMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="DirectorMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -179,6 +189,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ManagerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

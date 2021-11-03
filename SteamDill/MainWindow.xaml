@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SteamDill"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        WindowStyle="None" AllowsTransparency="true">
+        WindowStyle="None" AllowsTransparency="true" WindowState="Maximized">
     <Window.Background>
         <ImageBrush ImageSource="img\shapes.png"></ImageBrush>
     </Window.Background>
