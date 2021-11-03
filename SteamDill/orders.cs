@@ -18,10 +18,10 @@ namespace SteamDill
         public string order_number { get; set; }
         public int id_status { get; set; }
         public int id_table { get; set; }
-        public int id_product { get; set; }
+        public int id_store { get; set; }
     
         public virtual order_status order_status { get; set; }
-        public virtual products products { get; set; }
+        public virtual storage storage { get; set; }
         public virtual tables tables { get; set; }
     }
 }

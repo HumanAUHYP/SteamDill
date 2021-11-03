@@ -21,6 +21,7 @@ namespace SteamDill
     /// </summary>
     public partial class MainWindow : Window
     {
+        public bool isMaximize = false;
         public static ObservableCollection<users> users { get; set; }
         public static ObservableCollection<user_types> types { get; set; }
         public MainWindow()
@@ -42,6 +43,12 @@ namespace SteamDill
         {
             Close();
         }
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (isMaximize) WindowState = WindowState.Normal;
+            else WindowState = WindowState.Maximized;
+            isMaximize = !isMaximize;
+        }
 
         private void btn_reg_Click(object sender, RoutedEventArgs e)
         {
@@ -62,10 +69,18 @@ namespace SteamDill
                 {
                     var type = types.Where(a => a.id_type == z.id_type).FirstOrDefault();
                     MessageBox.Show($"Авторизация успешна, {z.name}, вы {type.type_user}");
+                    GLOBALS.name = z.name;
+                    GLOBALS.pos = type.type_user;
                     if (type.type_user == "Официант")
                     {
                         WaiterMenu waiterMenu = new WaiterMenu();
                         waiterMenu.Show();
+                        Close();
+                    }
+                    else if (type.type_user == "Менеджер")
+                    {
+                        ManagerMenu managerMenu = new ManagerMenu();
+                        managerMenu.Show();
                         Close();
                     }
                 }

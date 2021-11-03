@@ -12,18 +12,20 @@ namespace SteamDill
     using System;
     using System.Collections.Generic;
     
-    public partial class products
+    public partial class storage
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public products()
+        public storage()
         {
-            this.storage = new HashSet<storage>();
+            this.orders = new HashSet<orders>();
         }
     
+        public int id_store { get; set; }
+        public int count { get; set; }
         public int id_product { get; set; }
-        public string product_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<storage> storage { get; set; }
+        public virtual ICollection<orders> orders { get; set; }
+        public virtual products products { get; set; }
     }
 }

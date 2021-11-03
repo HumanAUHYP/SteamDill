@@ -16,12 +16,13 @@ using System.Windows.Shapes;
 namespace SteamDill
 {
     /// <summary>
-    /// Логика взаимодействия для OrdersComplete.xaml
+    /// Логика взаимодействия для OrderReady.xaml
     /// </summary>
-    public partial class OrdersComplete : Window
+    public partial class OrderReady : Window
     {
+        public bool isMaximize = false;
         public static ObservableCollection<orders> orders { get; set; }
-        public OrdersComplete()
+        public OrderReady()
         {
             InitializeComponent();
             tb_namePos.Text = $"{GLOBALS.name}, {GLOBALS.pos}";
@@ -43,31 +44,37 @@ namespace SteamDill
         }
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            WaiterMenu waiterMenu = new WaiterMenu();
-            waiterMenu.Show();
+            ManagerMenu managerMenu = new ManagerMenu();
+            managerMenu.Show();
             Close();
+        }
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (isMaximize) WindowState = WindowState.Normal;
+            else WindowState = WindowState.Maximized;
+            isMaximize = !isMaximize;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var del = orders.Where(a => a.order_number == txt_order.Text && a.id_status == 2).FirstOrDefault();
-                var order_num = del.order_number;
-                while (del != null)
+                var ready = orders.Where(a => a.order_number == txt_order.Text && a.id_status == 1).FirstOrDefault();
+                var order_num = ready.order_number;
+                while (ready != null)
                 {
-                    db_connection.connection.orders.Remove(del);
+                    ready.id_status = 2;
                     db_connection.connection.SaveChanges();
                     orders = new ObservableCollection<orders>(db_connection.connection.orders.ToList());
-                    del = orders.Where(a => a.order_number == txt_order.Text && a.id_status == 2).FirstOrDefault();
+                    ready = orders.Where(a => a.order_number == txt_order.Text && a.id_status == 1).FirstOrDefault();
                 }
-                MessageBox.Show($"Order {order_num} completed");
+                MessageBox.Show($"Order {order_num} ready");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"{ex}", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
+
         }
     }
 }

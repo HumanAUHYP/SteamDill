@@ -107,8 +107,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate1}" Click="exit_Click" Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" />
-            <Button x:Name="back" Content="X" HorizontalAlignment="Left" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate2}" Click="back_Click" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" />
+            <Button x:Name="exit" Content="X" HorizontalAlignment="Right" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate1}" Click="exit_Click" Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" Margin="0,10,10,0" />
+            <Button x:Name="back" Content="X" HorizontalAlignment="Left" Width="50" Height="50" Template="{DynamicResource ButtonControlTemplate2}" Click="back_Click" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Margin="10,10,0,0" />
+            <TextBlock x:Name="tb_namePos" Grid.Column="1" Text="Имя/Должность" Foreground="White" FontSize="32" HorizontalAlignment="Center" Margin="0,50,0,0"/>
             <StackPanel Grid.Row="1" Grid.Column="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="69" Margin="75,0,39,0" Width="417">
                     <TextBlock Text="Order number:" Margin="10" Foreground="White" FontSize="32"/>

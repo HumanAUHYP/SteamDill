@@ -21,13 +21,17 @@ namespace SteamDill
     public partial class OrdersCreate : Window
     {
         public static ObservableCollection<products> products { get; set; }
+        public static ObservableCollection<storage> storage { get; set; }
         public static ObservableCollection<tables> tables { get; set; }
         int table_i { get; set; }
         int product_i { get; set; }
         public OrdersCreate()
         {
             InitializeComponent();
+            tb_namePos.Text = $"{GLOBALS.name}, {GLOBALS.pos}";
+
             products = new ObservableCollection<products>(db_connection.connection.products.ToList());
+            storage = new ObservableCollection<storage>(db_connection.connection.storage.ToList());
             tables = new ObservableCollection<tables>(db_connection.connection.tables.ToList());
             this.DataContext = this;
         }
@@ -54,14 +58,24 @@ namespace SteamDill
         {
             try
             {
-                var save = new orders();
-                save.id_status = 1;
-                save.id_table = table_i;
-                save.id_product = product_i;
-                save.order_number = txt_order.Text;
-                db_connection.connection.orders.Add(save);
-                db_connection.connection.SaveChanges();
-                MessageBox.Show("Order created");
+                var store = storage.Where(a => a.id_product == product_i).FirstOrDefault(); ;
+                if (store.count > 0)
+                {
+                    var save = new orders();
+                    save.id_status = 1;
+                    save.id_table = table_i;
+                    save.id_store = product_i;
+                    save.order_number = txt_order.Text;
+                    db_connection.connection.orders.Add(save);
+                    db_connection.connection.SaveChanges();
+                    store.count -= 1;
+                    db_connection.connection.SaveChanges();
+                    MessageBox.Show("Order created");
+                }
+                else
+                {
+                    MessageBox.Show("Product is out of stock", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (Exception ex)
             {

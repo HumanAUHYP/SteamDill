@@ -15,15 +15,18 @@ using System.Windows.Shapes;
 namespace SteamDill
 {
     /// <summary>
-    /// Логика взаимодействия для WaiterMenu.xaml
+    /// Логика взаимодействия для ManagerMenu.xaml
     /// </summary>
-    public partial class WaiterMenu : Window
+    public partial class ManagerMenu : Window
     {
-        public WaiterMenu()
+        public bool isMaximize = false;
+        public ManagerMenu()
         {
             InitializeComponent();
             tb_namePos.Text = $"{GLOBALS.name}, {GLOBALS.pos}";
         }
+
+
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
@@ -42,18 +45,24 @@ namespace SteamDill
             main.Show();
             Close();
         }
-
-        private void btn_newOrder_Click(object sender, RoutedEventArgs e)
+        private void Maximize_Click(object sender, RoutedEventArgs e)
         {
-            OrdersCreate ordersCreate = new OrdersCreate();
-            ordersCreate.Show();
+            if (isMaximize) WindowState = WindowState.Normal;
+            else WindowState = WindowState.Maximized;
+            isMaximize = !isMaximize;
+        }
+
+        private void btn_ready_Click(object sender, RoutedEventArgs e)
+        {
+            OrderReady orderReady = new OrderReady();
+            orderReady.Show();
             Close();
         }
 
-        private void btn_complete_Click(object sender, RoutedEventArgs e)
+        private void btn_orderProd_Click(object sender, RoutedEventArgs e)
         {
-            OrdersComplete ordersComplete = new OrdersComplete();
-            ordersComplete.Show();
+            OrdersCreate ordersCreate = new OrdersCreate();
+            ordersCreate.Show();
             Close();
         }
     }

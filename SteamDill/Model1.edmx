@@ -20,14 +20,22 @@
           <Property Name="order_number" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="id_status" Type="int" Nullable="false" />
           <Property Name="id_table" Type="int" Nullable="false" />
-          <Property Name="id_product" Type="int" Nullable="false" />
+          <Property Name="id_store" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="products">
           <Key>
             <PropertyRef Name="id_product" />
           </Key>
-          <Property Name="id_product" Type="int" Nullable="false" />
+          <Property Name="id_product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="storage">
+          <Key>
+            <PropertyRef Name="id_store" />
+          </Key>
+          <Property Name="id_store" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+          <Property Name="id_product" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -79,15 +87,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_orders_product_types">
-          <End Role="products" Type="Self.products" Multiplicity="1" />
+        <Association Name="FK_orders_storage">
+          <End Role="storage" Type="Self.storage" Multiplicity="1" />
           <End Role="orders" Type="Self.orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="products">
-              <PropertyRef Name="id_product" />
+            <Principal Role="storage">
+              <PropertyRef Name="id_store" />
             </Principal>
             <Dependent Role="orders">
-              <PropertyRef Name="id_product" />
+              <PropertyRef Name="id_store" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -100,6 +108,18 @@
             </Principal>
             <Dependent Role="orders">
               <PropertyRef Name="id_table" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storage_products">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id_product" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="id_product" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -119,6 +139,7 @@
           <EntitySet Name="order_status" EntityType="Self.order_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="storage" EntityType="Self.storage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tables" EntityType="Self.tables" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_types" EntityType="Self.user_types" Schema="dbo" store:Type="Tables" />
@@ -127,13 +148,17 @@
             <End Role="order_status" EntitySet="order_status" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK_orders_product_types" Association="Self.FK_orders_product_types">
-            <End Role="products" EntitySet="products" />
+          <AssociationSet Name="FK_orders_storage" Association="Self.FK_orders_storage">
+            <End Role="storage" EntitySet="storage" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
           <AssociationSet Name="FK_orders_tables" Association="Self.FK_orders_tables">
             <End Role="tables" EntitySet="tables" />
             <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storage_products" Association="Self.FK_storage_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="storage" EntitySet="storage" />
           </AssociationSet>
           <AssociationSet Name="FK_users_user_types" Association="Self.FK_users_user_types">
             <End Role="user_types" EntitySet="user_types" />
@@ -148,6 +173,7 @@
           <EntitySet Name="order_status" EntityType="SteamDillModel.order_status" />
           <EntitySet Name="orders" EntityType="SteamDillModel.orders" />
           <EntitySet Name="products" EntityType="SteamDillModel.products" />
+          <EntitySet Name="storage" EntityType="SteamDillModel.storage" />
           <EntitySet Name="sysdiagrams" EntityType="SteamDillModel.sysdiagrams" />
           <EntitySet Name="tables" EntityType="SteamDillModel.tables" />
           <EntitySet Name="user_types" EntityType="SteamDillModel.user_types" />
@@ -156,13 +182,17 @@
             <End Role="order_status" EntitySet="order_status" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK_orders_product_types" Association="SteamDillModel.FK_orders_product_types">
-            <End Role="products" EntitySet="products" />
+          <AssociationSet Name="FK_orders_storage" Association="SteamDillModel.FK_orders_storage">
+            <End Role="storage" EntitySet="storage" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
           <AssociationSet Name="FK_orders_tables" Association="SteamDillModel.FK_orders_tables">
             <End Role="tables" EntitySet="tables" />
             <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storage_products" Association="SteamDillModel.FK_storage_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="storage" EntitySet="storage" />
           </AssociationSet>
           <AssociationSet Name="FK_users_user_types" Association="SteamDillModel.FK_users_user_types">
             <End Role="user_types" EntitySet="user_types" />
@@ -181,22 +211,32 @@
           <Key>
             <PropertyRef Name="id_order" />
           </Key>
-          <Property Name="id_order" Type="Int32" Nullable="false" />
+          <Property Name="id_order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="order_number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="id_status" Type="Int32" Nullable="false" />
           <Property Name="id_table" Type="Int32" Nullable="false" />
-          <Property Name="id_product" Type="Int32" Nullable="false" />
+          <Property Name="id_store" Type="Int32" Nullable="false" />
           <NavigationProperty Name="order_status" Relationship="SteamDillModel.FK_orders_order_status" FromRole="orders" ToRole="order_status" />
-          <NavigationProperty Name="products" Relationship="SteamDillModel.FK_orders_product_types" FromRole="orders" ToRole="products" />
+          <NavigationProperty Name="storage" Relationship="SteamDillModel.FK_orders_storage" FromRole="orders" ToRole="storage" />
           <NavigationProperty Name="tables" Relationship="SteamDillModel.FK_orders_tables" FromRole="orders" ToRole="tables" />
         </EntityType>
         <EntityType Name="products">
           <Key>
             <PropertyRef Name="id_product" />
           </Key>
-          <Property Name="id_product" Type="Int32" Nullable="false" />
+          <Property Name="id_product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="product_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="orders" Relationship="SteamDillModel.FK_orders_product_types" FromRole="products" ToRole="orders" />
+          <NavigationProperty Name="storage" Relationship="SteamDillModel.FK_storage_products" FromRole="products" ToRole="storage" />
+        </EntityType>
+        <EntityType Name="storage">
+          <Key>
+            <PropertyRef Name="id_store" />
+          </Key>
+          <Property Name="id_store" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <Property Name="id_product" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="SteamDillModel.FK_orders_storage" FromRole="storage" ToRole="orders" />
+          <NavigationProperty Name="products" Relationship="SteamDillModel.FK_storage_products" FromRole="storage" ToRole="products" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -251,15 +291,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_orders_product_types">
-          <End Type="SteamDillModel.products" Role="products" Multiplicity="1" />
+        <Association Name="FK_orders_storage">
+          <End Type="SteamDillModel.storage" Role="storage" Multiplicity="1" />
           <End Type="SteamDillModel.orders" Role="orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="products">
-              <PropertyRef Name="id_product" />
+            <Principal Role="storage">
+              <PropertyRef Name="id_store" />
             </Principal>
             <Dependent Role="orders">
-              <PropertyRef Name="id_product" />
+              <PropertyRef Name="id_store" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -272,6 +312,18 @@
             </Principal>
             <Dependent Role="orders">
               <PropertyRef Name="id_table" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storage_products">
+          <End Type="SteamDillModel.products" Role="products" Multiplicity="1" />
+          <End Type="SteamDillModel.storage" Role="storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id_product" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="id_product" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -304,7 +356,7 @@
           <EntitySetMapping Name="orders">
             <EntityTypeMapping TypeName="SteamDillModel.orders">
               <MappingFragment StoreEntitySet="orders">
-                <ScalarProperty Name="id_product" ColumnName="id_product" />
+                <ScalarProperty Name="id_store" ColumnName="id_store" />
                 <ScalarProperty Name="id_table" ColumnName="id_table" />
                 <ScalarProperty Name="id_status" ColumnName="id_status" />
                 <ScalarProperty Name="order_number" ColumnName="order_number" />
@@ -317,6 +369,15 @@
               <MappingFragment StoreEntitySet="products">
                 <ScalarProperty Name="product_name" ColumnName="product_name" />
                 <ScalarProperty Name="id_product" ColumnName="id_product" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storage">
+            <EntityTypeMapping TypeName="SteamDillModel.storage">
+              <MappingFragment StoreEntitySet="storage">
+                <ScalarProperty Name="id_product" ColumnName="id_product" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="id_store" ColumnName="id_store" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

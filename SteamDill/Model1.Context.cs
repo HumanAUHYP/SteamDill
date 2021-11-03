@@ -28,6 +28,7 @@ namespace SteamDill
         public virtual DbSet<order_status> order_status { get; set; }
         public virtual DbSet<orders> orders { get; set; }
         public virtual DbSet<products> products { get; set; }
+        public virtual DbSet<storage> storage { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tables> tables { get; set; }
         public virtual DbSet<user_types> user_types { get; set; }
